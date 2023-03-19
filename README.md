@@ -14,9 +14,9 @@ This is a simple music media player Java app for Android that allows you to play
 # Installation
 
 
-Clone the repository
-Open the project in Android Studio
-Build and run the app on your device or emulator
+1. Clone the repository
+2. Open the project in Android Studio
+3. Build and run the app on your device or emulator
 
 
 # Contributions
