@@ -2,7 +2,8 @@
 
 This is a simple music media player Java app for Android that allows you to play, pause, and skip tracks. It features a minimalist design with a clean interface that is easy to navigate.
 
-#Features
+# Features
+
 1. Play and pause functionality
 2. Skip tracks forward and backward
 3. Minimalist design with a clean interface
@@ -10,12 +11,15 @@ This is a simple music media player Java app for Android that allows you to play
 
 
 
-#Installation
+# Installation
+
+
 Clone the repository
 Open the project in Android Studio
 Build and run the app on your device or emulator
 
 
-#Contributions
+# Contributions
+
 Contributions to this project are welcome! If you find a bug or have a suggestion for a new feature, please open an issue on this repository.
 
