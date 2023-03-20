@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
     //media player
     private MediaPlayer mediaPlayer;
+    private int flag=0,flag2=0;
+
 
 
     //Handlers
@@ -56,8 +58,33 @@ public class MainActivity extends AppCompatActivity {
         mediaPlayer=MediaPlayer.create(this,R.raw.anotherlove);
         songTitle.setText("anotherLove.mp3");
 
+        seekBar.setClickable(true);
 
-        seekBar.setClickable(false);
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                if(flag2==1){
+                startTime=(double) i;
+                mediaPlayer.seekTo((int)startTime);
+
+                }
+
+            }
+
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                flag=1;
+                flag2=1;
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                flag=0;
+                flag2=0;
+            }
+        });
 
 
         // add functionalities to the buttons
@@ -103,7 +130,6 @@ public class MainActivity extends AppCompatActivity {
 
                 }else{
                     Toast.makeText(MainActivity.this,"Can't Go Back!",Toast.LENGTH_SHORT).show();
-
                 }
             }
         });
@@ -135,13 +161,17 @@ public class MainActivity extends AppCompatActivity {
     private Runnable UpdateSongTime=new Runnable() {
         @Override
         public void run() {
-            startTime=mediaPlayer.getCurrentPosition();
-            int minutes = (int) (startTime / 1000 / 60);
-            int seconds = (int) ((startTime / 1000) % 60);
-            String formattedTime = String.format("%02d:%02d", minutes, seconds);
-            time.setText(formattedTime);
-            seekBar.setProgress((int)startTime);
-            handler.postDelayed(this,100);
+
+                startTime = mediaPlayer.getCurrentPosition();
+                int minutes = (int) (startTime / 1000 / 60);
+                int seconds = (int) ((startTime / 1000) % 60);
+                String formattedTime = String.format("%02d:%02d", minutes, seconds);
+                time.setText(formattedTime);
+
+                if (flag==0)
+                    seekBar.setProgress((int) startTime);
+                handler.postDelayed(this, 100);
+
         }
 
     };
